@@ -1,29 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8" />
-      <title>VideoPlayer</title>
-      <link href="css/style.css" rel="stylesheet" />
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="js/out.js"></script>
-   </head>
-   <body>
-      <div id="player">
-         <video id="player-video" width="640" height="480" controls>
-            <source src="media/sample1.mp4" type='video/mp4'>
-         </video>
+  <head>
+    <meta charset="utf-8" />
+    <title>VideoPlayer</title>
+    <meta name="viewport" content="initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/out.js"></script>
+  </head>
+  <body>
+    <figure id="player">
+      <div id="player-video-container">
+        <div id="video">
+          <video id="player-video" width="640" height="480" controls>
+            <source src="http://thenewcode.com/assets/videos/mountain.mp4" type="video/mp4">
+          </video>
+        </div>
          <div id="player-controls">
-           <button id="play-button" title="play" type="button">Play</button>
-           <button id="stop-button" title="stop" type="button">Stop</button>
-           <div id="player-progress"></div>
+           <button id="play-button" title="play" type="button">
+             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+           </button>
+           <button id="stop-button" title="stop" type="button">
+             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>
+           </button>
+           <div id="player-progress">
+             <span class="progress-bar"></span>
+           </div>
            <input id="player-volume" type="range" max="1" min="0" step="0.05" />
+           <button id="fullscreen-button" title="fullscreen" type="button">
+             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 18 18"><path d="M4.5 11H3v4h4v-1.5H4.5V11zM3 7h1.5V4.5H7V3H3v4zm10.5 6.5H11V15h4v-4h-1.5v2.5zM11 3v1.5h2.5V7H15V3h-4z"/></svg>
+           </button>
          </div>
          <div id="player-info"></div>
       </div>
-      <div id="playlist">
-        <ul>
+      <div id="playlist-container">
+        <h2 class="playlist-header">Sample playlist</h2>
+        <ul id="playlist" class="playlist">
           <!--playlist elements here-->
+          <li>
+            <a href="http://thenewcode.com/assets/videos/mountain.mp4"><img src="http://thenewcode.com/assets/images/vid-mountain.jpg" alt="mountain"></a>
+          </li>
+          <li>
+            <a href="http://thenewcode.com/assets/videos/ocean-diver.mp4"><img src="http://thenewcode.com/assets/images/ocean-diver.jpg" alt="ocean-diver"></a>
+          </li>
         </ul>
       </div>
-   </body>
+    </figure>
+  </body>
 </html>
