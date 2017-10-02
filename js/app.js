@@ -7,6 +7,7 @@ $(()=>{
       this.stopButton = $('#stop-button');
       this.progressBar = $('.progress-bar');
       this.volumeButton = $('#player-volume');
+      this.fullscreenButton = $('#fullscreen-button');
       this.playerInfo = $('#player-info');
       this.infoTimeout = false; //useful in showInfo method
     }
@@ -33,11 +34,12 @@ $(()=>{
     stop(){
       this.playButton.attr("title", "play");
       this.playButton.html('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>');
-      this.showInfo("Paused");
+      this.showInfo("Stopped");
       this.video.pause();
       this.video.removeAttribute("autoplay");
       this.video.removeAttribute("src");
       this.video.load();
+      playlist.setIsActive(0);
     }
 
     showProgress(){
@@ -51,6 +53,16 @@ $(()=>{
     changeVolume(){
       this.video.volume = this.volumeButton.val();
       this.showInfo("Volume: " + (this.video.volume*100).toFixed(0) + "%");
+    }
+
+    fullscreen(){
+      if (this.video.requestFullscreen){
+        this.video.requestFullscreen();
+      } else if (this.video.mozRequestFullScreen){
+        this.video.mozRequestFullScreen();
+      } else if (this.video.webkitRequestFullscreen){
+        this.video.webkitRequestFullscreen();
+      }
     }
 
     showInfo(text){
@@ -106,7 +118,7 @@ $(()=>{
       this.list.forEach((element, index)=>{
         const $li = $('<li>');
         const $a = $('<a>').attr("href", element.href).attr("data-number", index);
-        const $img = $('<img>').attr("src", element.img).attr("alt", element.alt);
+        const $img = $('<img>').attr("src", element.img).attr("alt", element.alt).attr("class", "thumbnail");
 
         $a.append($img);
         $li.append($a);
@@ -124,12 +136,21 @@ $(()=>{
       }
     }
 
+    setIsActive(index){
+      let images = document.getElementsByTagName('img');
+      for(let i =0; i<images.length; i++){
+        images[i].classList.remove('isActive');
+      }
+      images[index].classList.add('isActive');
+    }
+
   }
 
   const playlist = new Playlist();
   const player = new Player();
 
   playlist.loadFiles();
+  playlist.setIsActive(0);
   player.preventControls();
 
   player.playButton.on("click", ()=>{
@@ -144,10 +165,15 @@ $(()=>{
     player.showProgress();
   }, false);
 
+  player.fullscreenButton.on("click", ()=>{
+    player.fullscreen();
+  });
+
   player.video.addEventListener("ended", ()=>{
     if(playlist.currentVideo < playlist.list.length - 1){
       player.play(playlist.nextVideo);
       playlist.currentVideo ++;
+      playlist.setIsActive(playlist.currentVideo);
     } else{
       player.stop();
       playlist.currentVideo = 0;
@@ -164,6 +190,7 @@ $(()=>{
     player.play(this.getAttribute("href"));
     playlist.currentVideo = this.dataset["number"];
     playlist.setNextVideo();
+    playlist.setIsActive(this.dataset["number"]);
   });
 
 });

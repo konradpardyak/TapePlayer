@@ -132,16 +132,16 @@ input[type=range]::-moz-range-track {
 }
 #playlist-container{
   width: 100%;
-  height: 100%;
+  height: 100vh;
   float: left;
-  background-color: #E0E0E0;
 }
 .playlist-header{
   display: block;
   width: 100%;
   height: 60px;
   line-height: 50px;
-  background-color: #BDBDBD;
+  background-color: #01579B;
+  color: white;
   font-size: 1.7rem;
   font-weight: 400;
   padding: 5px;
@@ -154,9 +154,14 @@ input[type=range]::-moz-range-track {
   list-style: none;
 }
 .playlist li a img{
-  border: 3px solid #039BE5;
   width: 100%;
-  height: 10vw;
+  height: 60vw;
+}
+.playlist .thumbnail{
+  border: 5px solid #039BE5;
+}
+.playlist .isActive{
+  border: 5px solid #9CCC65;
 }
 @media (orientation: landscape){
   #player{
@@ -176,8 +181,16 @@ input[type=range]::-moz-range-track {
     float: left;
   }
   #playlist-container{
+    background-color: #0277BD;
     width: 20vw;
     height: 100%;
     float: left;
+  }
+  .playlist{
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .playlist li a img{
+    height: 10vw;
   }
 }
