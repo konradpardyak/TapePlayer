@@ -1,17 +1,24 @@
+const path = require('path');
+
 module.exports = {
-  entry: "./js/app.js",
+  entry: './src/tapeplayer.js',
   output: {
-    filename: "js/out.js"
+    path: path.resolve(__dirname, './dist'),
+    filename: 'tapeplayer.js'
   },
   watch: true,
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: { presets: ['es2015'] }
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env']
+          }
+        }
       }
     ]
   }
-}
+};
