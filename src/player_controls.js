@@ -1,7 +1,7 @@
 export class Player {
   constructor(){
     this.video = document.getElementById('player-video');
-    this.playButton = $('#play-button');
+    this.playButton = document.getElementById('play-button');
     this.stopButton = $('#stop-button');
     this.progressBar = $('.progress-bar');
     this.volumeButton = $('#player-volume');
@@ -16,28 +16,27 @@ export class Player {
   //change play and pause icon
   playAndPause(){
     if (this.video.paused || this.video.ended) {
-      this.playButton.attr("title", "pause");
-      this.playButton.html('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>');
+      //this.playButton.attr("title", "paused");
+      this.playButton.innerHTML = '<i class="medium material-icons">pause</i>';
       this.showInfo("Playing");
       this.video.play();
     }
     else {
-      this.playButton.attr("title", "play");
-      this.playButton.html('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>');
+      //this.playButton.attr("title", "play");
+      this.playButton.innerHTML = '<i class="medium material-icons">play_arrow</i>';
       this.showInfo("Paused");
       this.video.pause();
     }
   }
 
   stop(){
-    this.playButton.attr("title", "play");
-    this.playButton.html('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>');
+    //this.playButton.attr("title", "play");
+    this.playButton.innerHTML = '<i class="medium material-icons">play_arrow</i>';
     this.showInfo("Stopped");
     this.video.pause();
     this.video.removeAttribute("autoplay");
     this.video.removeAttribute("src");
     this.video.load();
-    playlist.setIsActive(0);
   }
 
   showProgress(){
