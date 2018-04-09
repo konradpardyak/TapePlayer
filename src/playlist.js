@@ -3,16 +3,20 @@ export class Playlist{
     this.list = [
                   {href: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
                   img: 'http://camendesign.com/code/video_for_everybody/poster.jpg',
-                  alt: 'big-buck-bunny'},
+                  alt: 'big-buck-bunny',
+                  des: 'Big Buck Buny'},
                   {href: 'http://thenewcode.com/assets/videos/atlantic-light.mp4',
                   img: 'http://thenewcode.com/assets/images/trotternish-ridge-isle-of-skye.jpg',
-                  alt: 'atlantic-light'},
+                  alt: 'atlantic-light',
+                  des: 'Atlantic light'},
                   {href: 'http://thenewcode.com/assets/videos/mountain.mp4',
                   img: 'http://thenewcode.com/assets/images/vid-mountain.jpg',
-                  alt: 'mountain'},
+                  alt: 'mountain',
+                  des: 'Mountains'},
                   {href: 'http://thenewcode.com/assets/videos/ocean-diver.mp4',
                   img: 'http://thenewcode.com/assets/images/ocean-diver.jpg',
-                  alt: 'ocean-diver'}
+                  alt: 'ocean-diver',
+                  des: 'Diving under ocean'}
                 ]
     this.links = null;
     this.currentVideo = 0;
@@ -26,12 +30,22 @@ export class Playlist{
 
     const $playlistUl = $('#playlist');
     this.list.forEach((element, index)=>{
-      const $li = $('<li>');
+      const $li = $('<li>').attr("class", "card horizontal");
+      const $cardImage = $('<div>').attr("class", "card-image");
       const $a = $('<a>').attr("href", element.href).attr("data-number", index);
       const $img = $('<img>').attr("src", element.img).attr("alt", element.alt).attr("class", "thumbnail");
+      const $cardStacked = $('<div>').attr("class", "card-stacked");
+      const $cardContent = $('<div>').attr("class", 'card-content');
+      const $description = $('<p>').text(element.des);
 
       $a.append($img);
-      $li.append($a);
+      $cardImage.append($a);
+      $li.append($cardImage);
+
+      $cardContent.append($description);
+      $cardStacked.append($cardContent);
+      $li.append($cardStacked);
+
       $playlistUl.append($li);
     });
 
@@ -49,9 +63,9 @@ export class Playlist{
   setIsActive(index){
     let images = document.getElementsByTagName('img');
     for(let i =0; i<images.length; i++){
-      images[i].classList.remove('isActive');
+      images[i].classList.remove('current-play');
     }
-    images[index].classList.add('isActive');
+    images[index].classList.add('current-play');
   }
 
 }
