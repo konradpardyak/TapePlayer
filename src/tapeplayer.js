@@ -14,12 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
   playlist.setIsActive(0);
   player.preventControls();
 
-  player.playButton.on("click", ()=>{
+  player.playButton.addEventListener("click", ()=>{
     player.playAndPause();
   });
 
   player.stopButton.on("click", ()=>{
     player.stop();
+    playlist.setIsActive(0);
   });
 
   player.video.addEventListener("timeupdate", (e)=>{
