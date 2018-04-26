@@ -1,4 +1,8 @@
-export class Player {
+/**
+ * @author Konrad Pardyak <konradpardyak@gmail.com>
+ */
+
+export class Controls {
   constructor(){
     this.video = document.getElementById('player-video');
     this.playButton = document.getElementById('play-button');

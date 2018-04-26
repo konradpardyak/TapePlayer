@@ -1,3 +1,7 @@
+/**
+ * @author Konrad Pardyak <konradpardyak@gmail.com>
+ */
+
 export class Playlist{
   constructor(){
     this.list = [
