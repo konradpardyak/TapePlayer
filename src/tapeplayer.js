@@ -18,7 +18,7 @@ class Tapeplayer {
       player.playAndPause();
     });
 
-    player.stopButton.on("click", ()=>{
+    player.stopButton.addEventListener("click", ()=>{
       player.stop();
       playlist.setIsActive(0);
     });
@@ -27,7 +27,7 @@ class Tapeplayer {
       player.showProgress();
     }, false);
 
-    player.fullscreenButton.on("click", ()=>{
+    player.fullscreenButton.addEventListener("click", ()=>{
       player.fullscreen();
     });
 
@@ -43,7 +43,7 @@ class Tapeplayer {
       playlist.setNextVideo();
     });
 
-    player.volumeButton.on("input", ()=>{
+    player.volumeButton.addEventListener("input", ()=>{
       player.changeVolume();
     });
 

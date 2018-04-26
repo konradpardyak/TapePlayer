@@ -6,11 +6,11 @@ export class Controls {
   constructor(){
     this.video = document.getElementById('player-video');
     this.playButton = document.getElementById('play-button');
-    this.stopButton = $('#stop-button');
-    this.progressBar = $('.progress-bar');
-    this.volumeButton = $('#player-volume');
-    this.fullscreenButton = $('#fullscreen-button');
-    this.playerInfo = $('#player-info');
+    this.stopButton = document.getElementById('stop-button');
+    this.progressBar = document.getElementById('progress-bar');
+    this.volumeButton = document.getElementById('player-volume');
+    this.fullscreenButton = document.getElementById('fullscreen-button');
+    this.playerInfo = document.getElementById('player-info');
     this.infoTimeout = false; //useful in showInfo method
   }
   //turn off default browser controls interface
@@ -48,11 +48,11 @@ export class Controls {
     if (this.video.currentTime > 0){
       progress = (100/this.video.duration)*this.video.currentTime;
     }
-    this.progressBar.css("width", progress + "%");
+    this.progressBar.style.width = progress + "%";
   }
 
   changeVolume(){
-    this.video.volume = this.volumeButton.val();
+    this.video.volume = this.volumeButton.value;
     this.showInfo("Volume: " + (this.video.volume*100).toFixed(0) + "%");
   }
 
@@ -73,11 +73,11 @@ export class Controls {
       this.infoTimeout = false;
     }
 
-    this.playerInfo.text(text);
-    this.playerInfo.fadeIn();
+    this.playerInfo.innerText = text;
+    this.playerInfo.style.display = "block";
 
     this.infoTimeout = setTimeout(()=>{
-      this.playerInfo.fadeOut();
+      this.playerInfo.style.display = "none";
     }, 1500);
 
   }
