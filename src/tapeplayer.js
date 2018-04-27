@@ -23,7 +23,7 @@ class Tapeplayer {
       playlist.setIsActive(0);
     });
 
-    player.video.addEventListener("timeupdate", (e)=>{
+    player.video.addEventListener("timeupdate", ()=>{
       player.showProgress();
     }, false);
 
