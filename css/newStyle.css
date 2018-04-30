@@ -39,10 +39,11 @@
 }
 #player-progress {
   height: 36px;
-  background-color: grey;
+  background-color: rgb(196, 196, 196);
+  border-radius: 2px;
 }
 #progress-bar {
   display: block;
   height: 36px;
-  background-color: blue;
+  border-radius: 2px;
 }
