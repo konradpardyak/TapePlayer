@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <title>TapePlayer</title>
   <meta name="viewport" content="initial-scale=1" />
+  <!--css-reset-->
+  <link rel="stylesheet" href="/css/reset.css">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <!-- Material design icons -->
@@ -16,63 +18,63 @@
   <script src="dist/tapeplayer.js"></script>
 </head>
 <body>
-  <!--<div class=" z-depth-1">-->
-    <div class="row">
-      <!--video and controls column-->
-      <div class="col s12 l8">
-        <!--video-->
-        <div class="row container-video">
-          <video id="player-video" class="responsive-video" width="100%" controls poster="img/poster.jpg">
-            <!--first video from playlist here-->
-          </video>
+  <!--Tape Player-->
+  <div class="container-tape-player">
+    <!--video and controls column-->
+    <div class="container-video-controls">
+      <!--video-->
+      <div class="container-video">
+        <video id="player-video" class="responsive-video" width="100%" controls poster="img/poster.jpg">
+          <!--first video from playlist here-->
+        </video>
+      </div>
+      <!--controls-->
+      <div class="container-controls">
+        <!--progress bar-->
+        <div id="player-progress" class="player-progress grey darken-2">
+          <div id="progress-bar" class="progress-bar light-blue accent-2"></div>
+          <div id="buffor-bar" class="buffor-bar grey lighten-1"></div>
+          <div id="current-play" class="current-play"></div>
         </div>
-        <!--controls-->
-        <div class="row container-controls">
+        <!--END progress bar-->
+
+        <!--buttons-->
+        <div class="container-buttons">
           <!--play/pause button-->
-          <div class="col s1">
-            <a id="play-button" class="waves-effect waves-light btn btn-controls teal accent-4">
-              <i class="medium material-icons">play_arrow</i>
-            </a>
-          </div>
+          <button id="play-button" class="waves-effect waves-light btn btn-floating light-blue accent-2">
+            <i class="medium material-icons">play_arrow</i>
+          </button>
           <!--stop button-->
-          <div class="col s1">
-            <a id="stop-button" class="waves-effect waves-light btn btn-controls red lighten-2">
-              <i class="medium material-icons">stop</i>
-            </a>
-          </div>
-          <!--progress bar-->
-          <div class="col s7">
-            <div id="player-progress">
-              <span id="progress-bar" class="blue lighten-2"></span>
-              
-            </div>
-          </div>
+          <button id="stop-button" class="waves-effect waves-light btn btn-floating light-blue accent-2">
+            <i class="medium material-icons">stop</i>
+          </button>
           <!--volume bar-->
-          <div class="col s2">
+          <div class="container-player-volume">
             <input id="player-volume" type="range" max="1" min="0" step="0.05" />
           </div>
           <!--fullscreen button-->
-          <div class="col s1">
-            <a id="fullscreen-button" class="waves-effect waves-light btn btn-controls blue lighten-2">
-              <i class="medium material-icons">fullscreen</i>
-            </a>
-          </div>
+          <button id="fullscreen-button" class="fullscreen-button waves-effect waves-light btn btn-floating light-blue accent-2">
+            <i class="medium material-icons">fullscreen</i>
+          </button>
         </div>
-
-        <div id="player-info"></div>
-
+        <!--END buttons-->
       </div>
-      <!--playlist column-->
-      <div class="col s12 l4">
-        <div class="container-playlist">
-          <h4 class="header">Playlist</h4>
-          <ul id="playlist" class="playlist">
-            <!--playlist elements here-->
-          </ul>
-        </div>
-      </div>
+      <!--END controls-->
 
+      <!--player info container-->
+      <div id="player-info" class="player-info"></div>
     </div>
-  <!--</div>-->
+    <!--END video and controls column-->
+
+    <!--playlist column-->
+    <div class="container-playlist">
+      <h4 class="header">Playlist</h4>
+      <ul id="playlist" class="playlist">
+        <!--playlist elements here-->
+      </ul>
+    </div>
+    <!--END playlist column-->
+  </div>
+  <!--END Tape Player-->
 </body>
 </html>
