@@ -1,6 +1,6 @@
 # TapePlayer
 
-![TapePlayer logo](https://github.com/konradpardyak/TapePlayer/blob/master/img/TapePlayer.JPG)
+![TapePlayer logo](https://github.com/konradpardyak/TapePlayer/blob/master/img/TapePlayer.jpg)
 
 #### https://konradpardyak.github.io/TapePlayer/
 
