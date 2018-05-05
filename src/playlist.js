@@ -5,10 +5,6 @@
 export class Playlist{
   constructor(){
     this.list = [
-                  {href: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
-                  img: 'http://camendesign.com/code/video_for_everybody/poster.jpg',
-                  alt: 'big-buck-bunny',
-                  des: 'Big Buck Buny'},
                   {href: 'http://thenewcode.com/assets/videos/atlantic-light.mp4',
                   img: 'http://thenewcode.com/assets/images/trotternish-ridge-isle-of-skye.jpg',
                   alt: 'atlantic-light',
@@ -17,6 +13,10 @@ export class Playlist{
                   img: 'http://thenewcode.com/assets/images/vid-mountain.jpg',
                   alt: 'mountain',
                   des: 'Mountains'},
+                  {href: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+                  img: 'http://camendesign.com/code/video_for_everybody/poster.jpg',
+                  alt: 'big-buck-bunny',
+                  des: 'Big Buck Buny'},
                   {href: 'http://thenewcode.com/assets/videos/ocean-diver.mp4',
                   img: 'http://thenewcode.com/assets/images/ocean-diver.jpg',
                   alt: 'ocean-diver',
@@ -34,21 +34,16 @@ export class Playlist{
 
     const $playlistUl = $('#playlist');
     this.list.forEach((element, index)=>{
-      const $li = $('<li>').attr("class", "card horizontal");
-      const $cardImage = $('<div>').attr("class", "card-image");
+      const $li = $('<li>').attr("class", "playlist-element");
       const $a = $('<a>').attr("href", element.href).attr("data-number", index);
-      const $img = $('<img>').attr("src", element.img).attr("alt", element.alt).attr("class", "thumbnail");
-      const $cardStacked = $('<div>').attr("class", "card-stacked");
-      const $cardContent = $('<div>').attr("class", 'card-content');
-      const $description = $('<p>').text(element.des);
+      const $tile = $('<div>').attr("class", "tile").attr("style", "background-image: url(" + element.img + ");");
+      const $description = $('<p>').attr("class", "description").text(element.des);
 
-      $a.append($img);
-      $cardImage.append($a);
-      $li.append($cardImage);
+      $tile.append($description);
+      $a.append($tile);
+      $li.append($a);
 
-      $cardContent.append($description);
-      $cardStacked.append($cardContent);
-      $li.append($cardStacked);
+
 
       $playlistUl.append($li);
     });
@@ -65,11 +60,11 @@ export class Playlist{
   }
 
   setIsActive(index){
-    let images = document.getElementsByTagName('img');
-    for(let i =0; i<images.length; i++){
-      images[i].classList.remove('current-play');
+    let elements = document.getElementsByTagName('li');
+    for(let i =0; i<elements.length; i++){
+      elements[i].classList.remove('current-play');
     }
-    images[index].classList.add('current-play');
+    elements[index].classList.add('current-play');
   }
 
 }

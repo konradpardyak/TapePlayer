@@ -1,3 +1,21 @@
+/* Scroll Bar */
+/* Width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #616161;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+/* END Scroll Bar */
 .container-tape-player {
 width: 100%;
 height: 100vh;
@@ -8,6 +26,7 @@ height: 100vh;
 .container-video-controls {
   width: 160vh;
   height: 100vh;
+  position: relative;
 }
 .container-video {
   background-color: #000;
@@ -39,19 +58,50 @@ height: 100vh;
   float: right;
   margin-right: 1vh;
 }
-/* Width */
-::-webkit-scrollbar {
+.player-info {
+  position: absolute;
+  bottom: 10vh;
+  left: 0;
+  z-index: 20;
+  color: #fff;
+  font-size: 1.8rem;
+}
+/* Playlist */
+.container-playlist {
+  width: calc(100vw - 160vh);
+}
+.playlist {
+  margin: 0;
+  overflow-y: auto;
+  height: 100vh;
+}
+.playlist::-webkit-scrollbar {
   width: 10px;
 }
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.playlist, .playlist-element, .tile {
+  width: 100%;
 }
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
+.playlist-element {
+  height: 25vh;
 }
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.tile {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.description {
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  background-color: rgba(10, 10, 10, 0.6);
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+}
+.tile:hover .description {
+  display: block;
+}
+.current-play {
+  ;
 }
