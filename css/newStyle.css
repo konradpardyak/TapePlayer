@@ -91,6 +91,7 @@ height: 100vh;
 }
 .playlist-element {
   height: 25vh;
+  position: relative;
 }
 .tile {
   height: 100%;
@@ -102,14 +103,46 @@ height: 100vh;
   width: 100%;
   height: 100%;
   padding: 2%;
-  background-color: rgba(10, 10, 10, 0.6);
+  background-color: rgba(10, 10, 10, 0.7);
   margin: 0;
   color: #fff;
   font-size: 1.5rem;
+  position: relative;
 }
 .tile:hover .description {
   display: block;
 }
-.current-play {
-  ;
+.description-title {
+  margin: 0;
+  width: 70%;
+  float: left;
+}
+.description-duration {
+  margin: 0;
+  width: 30%;
+  float: left;
+  text-align: right;
+}
+.description-logo {
+  margin: 0;
+  position: absolute;
+  left: 2%;
+  bottom: 2%;
+  font-weight: 700;
+  color: #40c4ff;
+  font-size: 1.3rem;
+}
+.now-playing {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 1%;
+  font-size: 1.5rem;
+  color: #fff;
+  z-index: 30;
+  display: none;
+  background-color: rgba(10, 10, 10, 0.7);
+}
+li.now-playing-visible .now-playing {
+  display: block;
 }
