@@ -1,22 +1,25 @@
-# VideoPlayer
+# TapePlayer
+
+![TapePlayer logo](https://github.com/konradpardyak/TapePlayer/blob/master/img/TapePlayer.JPG)
+
 #### https://konradpardyak.github.io/TapePlayer/
 
-Responsive video player with mobile support, autoplay playlist and status messages.
+HTML5 video player with customized controls and automatic playlist.
 
-__In build__
-
-## Used tools and technologies
+## Tools and technologies
 
 * HTML5 video API
-* ES6
-* Webpack + Babel
-* RWD
+* ES6 (Webpack + Babel)
 * Materialize CSS
+* jQuery (temporarily - later only clear JS for better performance)
+
+## I am currently working on
+
+* Support for all main PC browsers. Now best working on Chrome
+* Improve design
+* Removing jQuery because it is helpfull only with DOM
 
 ## To do
 
-* Support for other formats
-* On/Off autoplay button
-* Repeat playlist button
-* Shuffle play button
-* Unit test
+* RWD
+* Add playlist settings
