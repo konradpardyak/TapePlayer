@@ -7,6 +7,7 @@ export class Controls {
     this.video = document.getElementById('player-video');
     this.playButton = document.getElementById('play-button');
     this.stopButton = document.getElementById('stop-button');
+    this.playerProgress = document.getElementById('player-progress');
     this.progressBar = document.getElementById('progress-bar');
     this.bufferedBar = document.getElementById('buffer-bar');
     this.volumeButton = document.getElementById('player-volume');
@@ -58,6 +59,10 @@ export class Controls {
       buffer = (100/this.video.duration)*this.video.buffered.end(0);
     }
     this.bufferedBar.style.width = buffer + "%";
+  }
+
+  changeTime(event){
+    this.video.currentTime = (event.offsetX*this.video.duration)/this.playerProgress.offsetWidth;
   }
 
   changeVolume(){

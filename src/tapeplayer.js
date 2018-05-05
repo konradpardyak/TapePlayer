@@ -32,6 +32,10 @@ class Tapeplayer {
       player.showBuffered();
     });
 
+    player.playerProgress.addEventListener("mouseup", (event)=>{
+      player.changeTime(event);
+    })
+
     player.fullscreenButton.addEventListener("click", ()=>{
       player.fullscreen();
     });
