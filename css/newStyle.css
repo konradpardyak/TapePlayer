@@ -70,6 +70,14 @@ height: 100vh;
 .container-playlist {
   width: calc(100vw - 160vh);
 }
+@-moz-document url-prefix() {
+  input[type="range"] {
+    margin: 0;
+  }
+  .container-playlist {
+    width: calc(100vw - 160vh - 13px);
+  }
+}
 .playlist {
   margin: 0;
   overflow-y: auto;
