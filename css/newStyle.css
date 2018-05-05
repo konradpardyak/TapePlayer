@@ -39,11 +39,22 @@ height: 100vh;
   background-color: #000;
 }
 .player-progress {
+  position: relative;
   width: 160vh;
+  height: 8px;
+  z-index: 5;
+}
+.progress-bar, .buffer-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 8px;
 }
 .progress-bar {
-  height: 8px;
+  z-index: 20;
+}
+.buffer-bar {
+  z-index: 10;
 }
 .container-buttons {
   width: 160vh;

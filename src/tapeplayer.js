@@ -25,7 +25,12 @@ class Tapeplayer {
 
     player.video.addEventListener("timeupdate", ()=>{
       player.showProgress();
+      player.showBuffered();
     }, false);
+
+    player.video.addEventListener("progress", ()=> {
+      player.showBuffered();
+    });
 
     player.fullscreenButton.addEventListener("click", ()=>{
       player.fullscreen();

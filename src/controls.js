@@ -8,6 +8,7 @@ export class Controls {
     this.playButton = document.getElementById('play-button');
     this.stopButton = document.getElementById('stop-button');
     this.progressBar = document.getElementById('progress-bar');
+    this.bufferedBar = document.getElementById('buffer-bar');
     this.volumeButton = document.getElementById('player-volume');
     this.fullscreenButton = document.getElementById('fullscreen-button');
     this.playerInfo = document.getElementById('player-info');
@@ -49,6 +50,14 @@ export class Controls {
       progress = (100/this.video.duration)*this.video.currentTime;
     }
     this.progressBar.style.width = progress + "%";
+  }
+
+  showBuffered(){
+    let buffer = 0;
+    if (this.video.currentTime > 0){
+      buffer = (100/this.video.duration)*this.video.buffered.end(0);
+    }
+    this.bufferedBar.style.width = buffer + "%";
   }
 
   changeVolume(){
