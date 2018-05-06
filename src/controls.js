@@ -3,24 +3,24 @@
  */
 
 export class Controls {
-  constructor(){
-    this.video = document.getElementById('player-video');
-    this.playButton = document.getElementById('play-button');
-    this.stopButton = document.getElementById('stop-button');
-    this.playerProgress = document.getElementById('player-progress');
-    this.progressBar = document.getElementById('progress-bar');
-    this.bufferedBar = document.getElementById('buffer-bar');
-    this.volumeButton = document.getElementById('player-volume');
-    this.fullscreenButton = document.getElementById('fullscreen-button');
-    this.playerInfo = document.getElementById('player-info');
+  constructor() {
+    this.video = document.getElementById("player-video");
+    this.playButton = document.getElementById("play-button");
+    this.stopButton = document.getElementById("stop-button");
+    this.playerProgress = document.getElementById("player-progress");
+    this.progressBar = document.getElementById("progress-bar");
+    this.bufferedBar = document.getElementById("buffer-bar");
+    this.volumeButton = document.getElementById("player-volume");
+    this.fullscreenButton = document.getElementById("fullscreen-button");
+    this.playerInfo = document.getElementById("player-info");
     this.infoTimeout = false; //useful in showInfo method
   }
   //turn off default browser controls interface
-  preventControls(){
+  preventControls() {
     this.video.controls = false;
   }
   //change play and pause icon
-  playAndPause(){
+  playAndPause() {
     if (this.video.paused || this.video.ended) {
       //this.playButton.attr("title", "paused");
       this.playButton.innerHTML = '<i class="medium material-icons">pause</i>';
@@ -35,7 +35,7 @@ export class Controls {
     }
   }
 
-  stop(){
+  stop() {
     //this.playButton.attr("title", "play");
     this.playButton.innerHTML = '<i class="medium material-icons">play_arrow</i>';
     this.showInfo("Stopped");
@@ -45,44 +45,44 @@ export class Controls {
     this.video.load();
   }
 
-  showProgress(){
+  showProgress() {
     let progress = 0;
-    if (this.video.currentTime > 0){
+    if (this.video.currentTime > 0) {
       progress = (100/this.video.duration)*this.video.currentTime;
     }
     this.progressBar.style.width = progress + "%";
   }
 
-  showBuffered(){
+  showBuffered() {
     let buffer = 0;
-    if (this.video.currentTime > 0){
+    if (this.video.currentTime > 0) {
       buffer = (100/this.video.duration)*this.video.buffered.end(0);
     }
     this.bufferedBar.style.width = buffer + "%";
   }
 
-  changeTime(event){
-    this.video.currentTime = (event.offsetX*this.video.duration)/this.playerProgress.offsetWidth;
+  changeTime(event) {
+    this.video.currentTime = (event.offsetX * this.video.duration) / this.playerProgress.offsetWidth;
   }
 
-  changeVolume(){
+  changeVolume() {
     this.video.volume = this.volumeButton.value;
-    this.showInfo("Volume: " + (this.video.volume*100).toFixed(0) + "%");
+    this.showInfo("Volume: " + (this.video.volume * 100).toFixed(0) + "%");
   }
 
-  fullscreen(){
-    if (this.video.requestFullscreen){
+  fullscreen() {
+    if (this.video.requestFullscreen) {
       this.video.requestFullscreen();
-    } else if (this.video.mozRequestFullScreen){
+    } else if (this.video.mozRequestFullScreen) {
       this.video.mozRequestFullScreen();
-    } else if (this.video.webkitRequestFullscreen){
+    } else if (this.video.webkitRequestFullscreen) {
       this.video.webkitRequestFullscreen();
     }
   }
 
-  showInfo(text){
+  showInfo(text) {
     //this condition prevent invoking setTimeout multiple times
-    if(this.infoTimeout != false){
+    if(this.infoTimeout != false) {
       clearTimeout(this.infoTimeout);
       this.infoTimeout = false;
     }
@@ -90,13 +90,13 @@ export class Controls {
     this.playerInfo.innerText = text;
     this.playerInfo.style.display = "block";
 
-    this.infoTimeout = setTimeout(()=>{
+    this.infoTimeout = setTimeout(() => {
       this.playerInfo.style.display = "none";
     }, 1500);
 
   }
 
-  play(file){
+  play(file) {
     this.video.setAttribute("autoplay", "");
     this.video.src = file;
     this.playAndPause();

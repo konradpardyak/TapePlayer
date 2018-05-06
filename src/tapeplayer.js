@@ -8,57 +8,57 @@ import {Playlist} from "./playlist";
 class Tapeplayer {
   init() {
     const playlist = new Playlist();
-    const player = new Controls();
+    const controls = new Controls();
 
     playlist.loadFiles();
     playlist.setIsActive(0);
-    player.preventControls();
+    controls.preventControls();
 
-    player.playButton.addEventListener("click", ()=>{
-      player.playAndPause();
+    controls.playButton.addEventListener("click", () => {
+      controls.playAndPause();
     });
 
-    player.stopButton.addEventListener("click", ()=>{
-      player.stop();
+    controls.stopButton.addEventListener("click", () => {
+      controls.stop();
       playlist.setIsActive(0);
     });
 
-    player.video.addEventListener("timeupdate", ()=>{
-      player.showProgress();
-      player.showBuffered();
+    controls.video.addEventListener("timeupdate", () => {
+      controls.showProgress();
+      controls.showBuffered();
     }, false);
 
-    player.video.addEventListener("progress", ()=> {
-      player.showBuffered();
+    controls.video.addEventListener("progress", () => {
+      controls.showBuffered();
     });
 
-    player.playerProgress.addEventListener("mouseup", (event)=>{
-      player.changeTime(event);
+    controls.playerProgress.addEventListener("mouseup", (event) => {
+      controls.changeTime(event);
     })
 
-    player.fullscreenButton.addEventListener("click", ()=>{
-      player.fullscreen();
+    controls.fullscreenButton.addEventListener("click", () => {
+      controls.fullscreen();
     });
 
-    player.video.addEventListener("ended", ()=>{
-      if(playlist.currentVideo < playlist.list.length - 1){
-        player.play(playlist.nextVideo);
+    controls.video.addEventListener("ended", () => {
+      if(playlist.currentVideo < playlist.list.length - 1) {
+        controls.play(playlist.nextVideo);
         playlist.currentVideo ++;
         playlist.setIsActive(playlist.currentVideo);
-      } else{
-        player.stop();
+      } else {
+        controls.stop();
         playlist.currentVideo = 0;
       }
       playlist.setNextVideo();
     });
 
-    player.volumeButton.addEventListener("input", ()=>{
-      player.changeVolume();
+    controls.volumeButton.addEventListener("input", () => {
+      controls.changeVolume();
     });
 
-    playlist.links.on("click", function(event){
+    playlist.links.on("click", function(event) {
       event.preventDefault();
-      player.play(this.getAttribute("href"));
+      controls.play(this.getAttribute("href"));
       playlist.currentVideo = this.dataset["number"];
       playlist.setNextVideo();
       playlist.setIsActive(this.dataset["number"]);
